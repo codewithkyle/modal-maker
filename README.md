@@ -32,7 +32,7 @@ passive({
 
 confirm({
     heading: "Example Modal",
-    message: "This is an example passive modal."
+    message: "This is an example confirm modal."
 }).then(() => {
     console.log("Confirmed");
 }).catch(() => {
