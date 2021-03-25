@@ -1,6 +1,6 @@
 # Modal Maker
 
-A lightweight modal generator.
+A lightweight (1.5kb) modal generator.
 
 ## Install
 
