@@ -13,7 +13,7 @@ export class PassiveModal extends Modal{
 	private render(){
 		this.innerHTML = `
 			<div class="backdrop"></div>
-			<div class="${this.settings.size} modal">
+			<div class="modal" size="${this.settings.size}">
 				<h1>${this.settings.heading}</h1>
 				<p>${this.settings.message}</p>
 				<button class="close" aria-label="close modal">

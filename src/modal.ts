@@ -5,7 +5,7 @@ export class Modal extends HTMLElement{
 	private backdrop: HTMLElement;
 	public reject: Function;
 
-	constructor(rejectCallback = noop){
+	constructor(rejectCallback:Function = noop){
 		super();
 		this.closeButton = this.querySelector(".close");
 		this.backdrop = this.querySelector(".backdrop");
