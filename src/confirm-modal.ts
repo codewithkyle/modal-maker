@@ -48,9 +48,9 @@ export class ConfirmModal extends Modal{
 	}
 
 	connectedCallback(){
-		this.confirmButton = this.querySelector("confirm");
+		this.confirmButton = this.querySelector(".confirm");
 		this.confirmButton.addEventListener("click", this.confirm);
-		this.cancelButton = this.querySelector("cancel");
+		this.cancelButton = this.querySelector(".cancel");
 		this.cancelButton.addEventListener("click", this.cancel);
 	}
 }

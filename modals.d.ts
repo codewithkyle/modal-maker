@@ -19,3 +19,7 @@ export type FormModalSettings = {
 	size?: "small" | "medium" | "large";
 	form: HTMLFormElement;
 };
+
+declare const passive: (settings: Partial<PassiveModalSettings>) => void;
+declare const confirm: (settings: Partial<ConfirmModalSettings>) => Promise<void>;
+declare const form: (settings: Partial<FormModalSettings>) => Promise<FormData>;

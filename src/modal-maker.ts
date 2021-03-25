@@ -48,7 +48,7 @@ export class ModalMaker {
 				heading: "Heading",
 				message: "Confirm modals require a message.",
 				size: "small",
-				form: null,
+				form: document.createElement("form"),
 			}, settings);
 			this.launch(new ConfirmModal(config, resolve, reject));
 		});
