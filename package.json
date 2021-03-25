@@ -1,0 +1,18 @@
+{
+	"name": "@codewithkyle/modal-maker",
+	"version": "1.0.0",
+	"description": "A lightweight modal generator.",
+	"main": "modals.min.mjs",
+	"files": [
+		"modals.min.js",
+		"modals.min.mjs"
+	],
+	"scripts": {
+		"build": "esbuild ./src/modals.ts --outfile=modals.min.mjs --format=esm --minify --bundle && esbuild ./src/modals.ts --outfile=modals.min.js --format=iife --bundle --minify-whitespace --global-name=ModalMaker"
+	},
+	"author": "Kyle Andrews <codingwithkyle@gmail.com>",
+	"license": "MIT",
+	"dependencies": {
+		"esbuild": "^0.10.0"
+	}
+}
