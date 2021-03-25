@@ -26,27 +26,27 @@ import { passive, confirm, form } from "https://cdn.jsdelivr.net/npm/@codewithky
 import { passive, confirm, form } from "https://cdn.jsdelivr.net/npm/@codewithkyle/modal-maker@1/modals.min.mjs";
 
 passive({
-	heading: "Example Modal",
-	message: "This is an example passive modal."
+    heading: "Example Modal",
+    message: "This is an example passive modal."
 });
 
 confirm({
-	heading: "Example Modal",
-	message: "This is an example passive modal."
+    heading: "Example Modal",
+    message: "This is an example passive modal."
 }).then(() => {
-	console.log("Confirmed");
+    console.log("Confirmed");
 }).catch(() => {
-	console.log("Canceled");
+    console.log("Canceled");
 });
 
 const formEl = document.createElement("form");
 formEl.innerHTML = `<input type="text" placeholder="Your name" name="fullName">`;
 form({
-	form: formEl,
+    form: formEl,
 }).then((data) => {
-	console.log(data.get("fullName"));
+    console.log(data.get("fullName"));
 }).catch(() => {
-	console.log("Form rejected");
+    console.log("Form rejected");
 });
 ```
 
@@ -54,25 +54,25 @@ form({
 
 ```typescript
 interface Passive {
-	heading: string;
-	message: string;
-	size?: "small" | "medium" | "large";
+    heading: string;
+    message: string;
+    size?: "small" | "medium" | "large";
 }
 
 interface Confirm {
-	heading: string;
-	message: string;
-	size?: "small" | "medium" | "large";
-	rejectLabel?: string;
-	confirmLabel?: string;
-	dangerous?: boolean;
+    heading: string;
+    message: string;
+    size?: "small" | "medium" | "large";
+    rejectLabel?: string;
+    confirmLabel?: string;
+    dangerous?: boolean;
 }
 
 interface Form {
-	heading?: string;
-	message?: string;
-	size?: "small" | "medium" | "large";
-	form: HTMLFormElement;
+    heading?: string;
+    message?: string;
+    size?: "small" | "medium" | "large";
+    form: HTMLFormElement;
 }
 ```
 
@@ -82,16 +82,16 @@ interface Form {
 
 ```html
 <passive-modal>
-	<div class="backdrop"></div>
-	<div class="modal" size="small">
-		<h1>Example Heading</h1>
-		<p>Example message</p>
-		<button class="close" aria-label="close modal">
-			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
-			</svg>
-		</button>
-	</div>
+    <div class="backdrop"></div>
+    <div class="modal" size="small">
+        <h1>Example Heading</h1>
+        <p>Example message</p>
+        <button class="close" aria-label="close modal">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+            </svg>
+        </button>
+    </div>
 </passive-modal>
 ```
 
@@ -99,21 +99,21 @@ interface Form {
 
 ```html
 <confirm-modal>
-	<div class="backdrop"></div>
-	<div class="modal" size="small">
-		<h1>Example Heading</h1>
-		<p>Example message</p>
-		<div class="actions">
-			<button class="cancel">Cancel</button>
-			<!-- Danger class is only applied when the dangerous setting is set to true -->
-			<button class="confirm danger">Confirm</button>
-		</div>
-		<button class="close" aria-label="close modal">
-			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
-			</svg>
-		</button>
-	</div>
+    <div class="backdrop"></div>
+    <div class="modal" size="small">
+        <h1>Example Heading</h1>
+        <p>Example message</p>
+        <div class="actions">
+            <button class="cancel">Cancel</button>
+            <!-- Danger class is only applied when the dangerous setting is set to true -->
+            <button class="confirm danger">Confirm</button>
+        </div>
+        <button class="close" aria-label="close modal">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+            </svg>
+        </button>
+    </div>
 </confirm-modal>
 ```
 
@@ -121,21 +121,21 @@ interface Form {
 
 ```html
 <form-modal>
-	<div class="backdrop"></div>
-	<div class="modal" size="medium">
-		<!-- Heading and message elements are optional -->
-		<h1>Example Heading</h1>
-		<p>Example message</p>
-		<div class="form">
-			<form>
-				<!-- ...snip... -->
-			</form>
-		</div>
-		<button class="close" aria-label="close modal">
-			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
-			</svg>
-		</button>
-	</div>
+    <div class="backdrop"></div>
+    <div class="modal" size="medium">
+        <!-- Heading and message elements are optional -->
+        <h1>Example Heading</h1>
+        <p>Example message</p>
+        <div class="form">
+            <form>
+                <!-- ...snip... -->
+            </form>
+        </div>
+        <button class="close" aria-label="close modal">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+            </svg>
+        </button>
+    </div>
 </form-modal>
 ```
