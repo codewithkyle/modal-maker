@@ -2,6 +2,7 @@ import { PassiveModal } from "./passive-modal";
 import { ConfirmModalSettings, FormModalSettings, PassiveModalSettings } from "../modals";
 import { Modal } from "./modal";
 import { ConfirmModal } from "./confirm-modal";
+import { FormModal } from "./form-modal";
 
 export class ModalMaker {
 	private modal: Modal;
@@ -44,13 +45,13 @@ export class ModalMaker {
 
 	public form(settings:Partial<FormModalSettings>) : Promise<FormData>{
 		return new Promise((resolve, reject) => {
-			const config:ConfirmModalSettings = Object.assign({
-				heading: "Heading",
-				message: "Confirm modals require a message.",
-				size: "small",
+			const config:FormModalSettings = Object.assign({
+				heading: null,
+				message: null,
+				size: "medium",
 				form: document.createElement("form"),
 			}, settings);
-			this.launch(new ConfirmModal(config, resolve, reject));
+			this.launch(new FormModal(config, resolve, reject));
 		});
 	}
 }

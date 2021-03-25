@@ -17,8 +17,8 @@ export class FormModal extends Modal{
 		this.innerHTML = `
 			<div class="backdrop"></div>
 			<div class="modal" size="${this.settings.size}">
-				${ this.settings.heading.length ? `<h1>${this.settings.heading}</h1>` : null }
-				${ this.settings.message.length ? `<p>${this.settings.message}</p>` : null }
+				${ this.settings.heading?.length ? `<h1>${this.settings.heading}</h1>` : "" }
+				${ this.settings.message?.length ? `<p>${this.settings.message}</p>` : "" }
 				<div class="form"></div>
 				<button class="close" aria-label="close modal">
 					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -39,7 +39,7 @@ export class FormModal extends Modal{
 		}
 	}
 
-	connectedCallback(){
+	connected(){
 		this.form = this.querySelector(".form");
 		this.form.appendChild(this.settings.form);
 		this.settings.form.addEventListener("submit", this.submit);

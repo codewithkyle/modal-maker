@@ -7,8 +7,6 @@ export class Modal extends HTMLElement{
 
 	constructor(rejectCallback:Function = noop){
 		super();
-		this.closeButton = this.querySelector(".close");
-		this.backdrop = this.querySelector(".backdrop");
 		this.reject = rejectCallback;
 	}
 
@@ -17,11 +15,16 @@ export class Modal extends HTMLElement{
 		this.remove();
 	}
 
+	private connected(){}
+
 	connectedCallback(){
+		this.closeButton = this.querySelector(".close");
 		this.closeButton.addEventListener("click", this.close);
 		// @ts-ignore
 		document.activeElement.blur();
 		this.closeButton.focus();
+		this.backdrop = this.querySelector(".backdrop");
 		this.backdrop.addEventListener("click", this.close);
+		this.connected();
 	}
 }

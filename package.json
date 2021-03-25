@@ -8,11 +8,13 @@
 		"modals.min.mjs"
 	],
 	"scripts": {
-		"build": "esbuild ./src/modals.ts --outfile=modals.min.mjs --format=esm --minify --bundle && esbuild ./src/modals.ts --outfile=modals.min.js --format=iife --bundle --minify-whitespace --global-name=ModalMaker"
+		"build": "esbuild ./src/modals.ts --outfile=modals.min.mjs --format=esm --minify --bundle && esbuild ./src/modals.ts --outfile=modals.min.js --format=iife --bundle --minify-whitespace --global-name=ModalMaker",
+		"test": "npm run build && cp ./modals.min.js ./test/modals.min.js && cp ./modals.min.mjs ./test/modals.min.mjs && serve ./test"
 	},
 	"author": "Kyle Andrews <codingwithkyle@gmail.com>",
 	"license": "MIT",
-	"dependencies": {
-		"esbuild": "^0.10.0"
+	"devDependencies": {
+		"esbuild": "^0.10.0",
+		"serve": "^11.3.2"
 	}
 }

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Modal Maker</title>
+	<link href="https://unpkg.com/brixi@0.3.3/brixi.min.css" rel="stylesheet">
+	<style>
+		*{
+			box-sizing: border-box;
+		}
+		body{
+			font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+		}
+		button{
+			border: none;
+			outline: none;
+			background: transparent;
+		}
+
+		passive-modal,
+		confirm-modal,
+		form-modal{
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100vw;
+			height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			z-index: 9999;
+		}
+		.backdrop{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0,0,0,0.6);
+			backdrop-filter: blur(8px);
+			z-index: 1;
+		}
+		.modal{
+			display: inline-block;
+			background-color: var(--white);
+			border-radius: 0.5rem;
+			padding: 1rem;
+			width: 100%;
+			max-width: calc(100% - 2rem);
+			z-index: 2;
+			position: relative;
+			box-shadow: var(--shadow-lg);
+		}
+		.modal[size="small"]{
+			width: 300px;
+		}
+		.modal[size="medium"]{
+			width: 450px;
+		}
+		.modal[size="large"]{
+			width: 768px;
+		}
+		.close{
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 36px;
+			height: 36px;
+			display: inline-flex;
+			justify-content: center;
+			align-items: center;
+			cursor: pointer;
+			color: var(--grey-700);
+		}
+		.close:hover::before{
+			opacity: 0.1;
+		}
+		.close:focus-visible::before{
+			opacity: 0.1;
+		}
+		.close:active::before{
+			opacity: 0.15;
+		}
+		.close::before{
+			content: "";
+			display: inline-block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: var(--grey-500);
+			border-radius: 50%;
+			opacity: 0;
+			transition: all 150ms var(--ease-in-out);
+		}
+		.close svg{
+			width: 18px;
+			height: 18px;
+		}
+		h1{
+			display: block;
+			margin: 0;
+			width: 100%;
+			font-size: var(--font-lg);
+			font-weight: var(--font-bold);
+			color: var(--grey-800);
+			line-height: 1.618;
+		}
+		p{
+			display: block;
+			margin: 0 0 1rem;
+			width: 100%;
+			font-size: var(--font-sm);
+			color: var(--grey-700);
+			line-height: 1.618;
+		}
+		.actions{
+			display: flex;
+			width: 100%;
+			height: 36px;
+		}
+		.actions button{
+			width: 50%;
+			height: 100%;
+			display: inline-flex;
+			justify-content: center;
+			align-items: center;
+		}
+		.cancel{
+			background-color: var(--grey-100);
+			color: var(--grey-800);
+		}
+		.confirm{
+			background-color: var(--primary-700);
+			color: var(--white);
+		}
+		.confirm.danger{
+			background-color: var(--danger-700);
+		}
+	</style>
+</head>
+<body class="m-0 bg-grey-200 w-screen h-screen" flex="items-center justify-center">
+	
+	<button class="js-passive bg-primary-700 font-white px-1 radius-0.25 font-sm font-medium m-0.5 cursor-pointer shadow-md text-uppercase" flex="items-center justify-center" style="height: 36px;">Passive Modal</button>
+	<button class="js-confirm bg-primary-700 font-white px-1 radius-0.25 font-sm font-medium m-0.5 cursor-pointer shadow-md text-uppercase" flex="items-center justify-center" style="height: 36px;">Confirm Modal</button>
+	<button class="js-form bg-primary-700 font-white px-1 radius-0.25 font-sm font-medium m-0.5 cursor-pointer shadow-md text-uppercase" flex="items-center justify-center" style="height: 36px;">Form Modal</button>
+
+	<script type="module">
+		import { passive, confirm, form } from "./modals.min.mjs";
+
+		const confirmBttn = document.body.querySelector(".js-confirm");
+		confirmBttn.addEventListener("click", () => {
+			confirm({
+				heading: "Example Modal",
+				message: "This is an example passive modal."
+			})
+			.then(() => {
+				console.log("Confirmed");
+			})
+			.catch(() => {
+				console.log("Canceled");
+			});
+		});
+
+		const formBttn = document.body.querySelector(".js-form");
+		formBttn.addEventListener("click", () => {
+			const formEl = document.createElement("form");
+			formEl.innerHTML = `<input type="text" placeholder="Your name" name="fullName">`;
+			form({
+				form: formEl,
+			})
+			.then((data) => {
+				console.log(data.get("fullName"));
+			})
+			.catch(() => {
+				console.log("Form rejected");
+			});
+		});
+
+		const passiveBttn = document.body.querySelector(".js-passive");
+		passiveBttn.addEventListener("click", () => {
+			passive({
+				heading: "Example Modal",
+				message: "This is an example passive modal."
+			});
+		});
+	</script>
+
+	<!-- <script src="./modals.min.js"></script>
+	<script>
+		const confirmBttn = document.body.querySelector(".js-confirm");
+		confirmBttn.addEventListener("click", () => {
+			ModalMaker.confirm({
+				heading: "Example Modal",
+				message: "This is an example passive modal."
+			})
+			.then(() => {
+				console.log("Confirmed");
+			})
+			.catch(() => {
+				console.log("Canceled");
+			});
+		});
+
+		const formBttn = document.body.querySelector(".js-form");
+		formBttn.addEventListener("click", () => {
+			const formEl = document.createElement("form");
+			formEl.innerHTML = `<input type="text" placeholder="Your name" name="fullName">`;
+			ModalMaker.form({
+				form: formEl,
+			})
+			.then((data) => {
+				console.log(data.get("fullName"));
+			})
+			.catch(() => {
+				console.log("Form rejected");
+			});
+		});
+
+		const passiveBttn = document.body.querySelector(".js-passive");
+		passiveBttn.addEventListener("click", () => {
+			ModalMaker.passive({
+				heading: "Example Modal",
+				message: "This is an example passive modal."
+			});
+		});
+	</script> -->
+</body>
+</html>
