@@ -23,6 +23,7 @@ export class ModalMaker {
 
 	public passive(settings:Partial<PassiveModalSettings>){
 		const config:PassiveModalSettings = Object.assign({
+			className: "",
 			heading: "Heading",
 			message: "Passive modals require a message.",
 			size: "small",
@@ -33,6 +34,7 @@ export class ModalMaker {
 	public confirm(settings:Partial<ConfirmModalSettings>): Promise<void>{
 		return new Promise((resolve, reject) => {
 			const config:ConfirmModalSettings = Object.assign({
+				className: "",
 				heading: "Heading",
 				message: "Confirm modals require a message.",
 				size: "small",
@@ -47,6 +49,7 @@ export class ModalMaker {
 	public form(settings:Partial<FormModalSettings>) : Promise<FormData>{
 		return new Promise((resolve, reject) => {
 			const config:FormModalSettings = Object.assign({
+				className: "",
 				heading: null,
 				message: null,
 				size: "medium",
@@ -58,6 +61,7 @@ export class ModalMaker {
 
 	public raw(settings:Partial<RawModalSettings>){
 		const config:RawModalSettings = Object.assign({
+			className: "",
 			heading: null,
 			message: null,
 			size: "large",

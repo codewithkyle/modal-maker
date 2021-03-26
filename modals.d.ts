@@ -2,6 +2,7 @@ export type PassiveModalSettings = {
 	heading: string;
 	message: string;
 	size?: "small" | "medium" | "large";
+	className?: string;
 };
 
 export type ConfirmModalSettings = {
@@ -11,6 +12,7 @@ export type ConfirmModalSettings = {
 	rejectLabel?: string;
 	confirmLabel?: string;
 	dangerous?: boolean;
+	className?: string;
 };
 
 export type FormModalSettings = {
@@ -18,6 +20,7 @@ export type FormModalSettings = {
 	message?: string;
 	size?: "small" | "medium" | "large";
 	form: HTMLFormElement;
+	className?: string;
 };
 
 export type RawModalSettings = {
@@ -25,6 +28,7 @@ export type RawModalSettings = {
 	message?: string;
 	size?: "small" | "medium" | "large";
 	el: HTMLElement | "string";
+	className?: string;
 };
 
 declare const passive: (settings: Partial<PassiveModalSettings>) => void;

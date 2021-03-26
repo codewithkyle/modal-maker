@@ -13,7 +13,7 @@ export class RawModal extends Modal{
 	private render(){
 		this.innerHTML = `
 			<div class="backdrop"></div>
-			<div class="modal" size="${this.settings.size}">
+			<div class="modal ${this.settings.className}" size="${this.settings.size}">
 				${ this.settings.heading?.length ? `<h1>${this.settings.heading}</h1>` : "" }
 				${ this.settings.message?.length ? `<p>${this.settings.message}</p>` : "" }
 				<div class="container">
