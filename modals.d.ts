@@ -27,7 +27,7 @@ export type RawModalSettings = {
 	heading?: string;
 	message?: string;
 	size?: "small" | "medium" | "large";
-	el: HTMLElement | "string";
+	el: HTMLElement | string;
 	className?: string;
 };
 
