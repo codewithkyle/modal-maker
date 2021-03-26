@@ -15,9 +15,10 @@ export class ConfirmModal extends Modal{
 	}
 
 	private render(){
+		this.className = this.settings.className;
 		this.innerHTML = `
 			<div class="backdrop"></div>
-			<div class="modal ${this.settings.className}" size="${this.settings.size}">
+			<div class="modal" size="${this.settings.size}">
 				<h1>${this.settings.heading}</h1>
 				<p>${this.settings.message}</p>
 				<div class="actions">
