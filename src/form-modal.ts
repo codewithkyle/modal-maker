@@ -40,8 +40,10 @@ export class FormModal extends Modal{
 	}
 
 	connected(){
-		this.form = this.querySelector(".form");
-		this.form.appendChild(this.settings.form);
-		this.settings.form.addEventListener("submit", this.submit);
+		if (this.settings.form instanceof HTMLFormElement){
+			this.form = this.querySelector(".form");
+			this.form.appendChild(this.settings.form);
+			this.settings.form.addEventListener("submit", this.submit);
+		}
 	}
 }

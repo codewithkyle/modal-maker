@@ -1,8 +1,9 @@
 import { PassiveModal } from "./passive-modal";
-import { ConfirmModalSettings, FormModalSettings, PassiveModalSettings } from "../modals";
+import { ConfirmModalSettings, FormModalSettings, PassiveModalSettings, RawModalSettings } from "../modals";
 import { Modal } from "./modal";
 import { ConfirmModal } from "./confirm-modal";
 import { FormModal } from "./form-modal";
+import { RawModal } from "./raw-modal";
 
 export class ModalMaker {
 	private modal: Modal;
@@ -49,9 +50,19 @@ export class ModalMaker {
 				heading: null,
 				message: null,
 				size: "medium",
-				form: document.createElement("form"),
+				form: null,
 			}, settings);
 			this.launch(new FormModal(config, resolve, reject));
 		});
+	}
+
+	public raw(settings:Partial<RawModalSettings>){
+		const config:RawModalSettings = Object.assign({
+			heading: null,
+			message: null,
+			size: "large",
+			el: null,
+		}, settings);
+		this.launch(new RawModal(config));
 	}
 }

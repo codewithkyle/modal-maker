@@ -15,7 +15,7 @@ export class Modal extends HTMLElement{
 		this.remove();
 	}
 
-	private connected(){}
+	protected connected(){}
 
 	connectedCallback(){
 		this.closeButton = this.querySelector(".close");

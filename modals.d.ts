@@ -20,6 +20,14 @@ export type FormModalSettings = {
 	form: HTMLFormElement;
 };
 
+export type RawModalSettings = {
+	heading?: string;
+	message?: string;
+	size?: "small" | "medium" | "large";
+	el: HTMLElement | "string";
+};
+
 declare const passive: (settings: Partial<PassiveModalSettings>) => void;
 declare const confirm: (settings: Partial<ConfirmModalSettings>) => Promise<void>;
 declare const form: (settings: Partial<FormModalSettings>) => Promise<FormData>;
+declare const raw: (settings: Partial<RawModalSettings>) => void;

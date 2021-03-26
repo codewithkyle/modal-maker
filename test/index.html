@@ -21,7 +21,8 @@
 
 		passive-modal,
 		confirm-modal,
-		form-modal{
+		form-modal,
+		raw-modal{
 			position: fixed;
 			top: 0;
 			left: 0;
@@ -147,9 +148,10 @@
 	<button class="js-passive bg-primary-700 font-white px-1 radius-0.25 font-sm font-medium m-0.5 cursor-pointer shadow-md text-uppercase" flex="items-center justify-center" style="height: 36px;">Passive Modal</button>
 	<button class="js-confirm bg-primary-700 font-white px-1 radius-0.25 font-sm font-medium m-0.5 cursor-pointer shadow-md text-uppercase" flex="items-center justify-center" style="height: 36px;">Confirm Modal</button>
 	<button class="js-form bg-primary-700 font-white px-1 radius-0.25 font-sm font-medium m-0.5 cursor-pointer shadow-md text-uppercase" flex="items-center justify-center" style="height: 36px;">Form Modal</button>
+	<button class="js-raw bg-primary-700 font-white px-1 radius-0.25 font-sm font-medium m-0.5 cursor-pointer shadow-md text-uppercase" flex="items-center justify-center" style="height: 36px;">Custom HTML Modal</button>
 
 	<script type="module">
-		import { passive, confirm, form } from "./modals.min.mjs";
+		import { passive, confirm, form, raw } from "./modals.min.mjs";
 
 		const confirmBttn = document.body.querySelector(".js-confirm");
 		confirmBttn.addEventListener("click", () => {
@@ -185,6 +187,20 @@
 			passive({
 				heading: "Example Modal",
 				message: "This is an example passive modal."
+			});
+		});
+
+		const rawButton = document.body.querySelector(".js-raw");
+		rawButton.addEventListener("click", () => {
+			const img = document.createElement("img");
+			img.src = "https://images.unsplash.com/photo-1616709620730-0058222c8389?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80";
+			img.alt = "waffles on white ceramic plate";
+			img.className = "w-full ar-16:9";
+			raw({
+				heading: "Waffles",
+				message: "They're better than pancakes. Don't @ me.",
+				el: img,
+				size: "large",
 			});
 		});
 	</script>
