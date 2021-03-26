@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.0] - 2021-03-26
+
+### Added
+
+- `raw()` modal
+- `className` setting
+
 ## [1.0.0] - 2021-03-25
 
 ### Added
@@ -15,5 +22,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `form()` modal
 - `confirm()` modal
 
-[unreleased]: https://github.com/codewithkyle/modal-maker/compare/v1.0.0...HEAD
+[unreleased]: https://github.com/codewithkyle/modal-maker/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/codewithkyle/modal-maker/releases/tag/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/codewithkyle/modal-maker/releases/tag/v1.0.0
